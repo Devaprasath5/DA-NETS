@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DA mosquito net</title>
+  <meta name="description" content="DA mosquito net - Durable mosquito nets for doors, windows and balconies" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --text:#071226;
+      --card:#f8fafc;
+      --accent:#d6342a; /* warm red accent for business */
+      --accent-2:#ff6b5f;
+      --radius:12px;
+      --shadow: 0 8px 30px rgba(2,6,23,0.08);
+      font-size:15px;
+    }
+    [data-theme="dark"]{
+      --bg:#06121a;
+      --muted:#9aa9b8;
+      --text:#e6eef6;
+      --card:#071827;
+      --shadow: 0 12px 40px rgba(0,0,0,0.6);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#06121a; --muted:#9aa9b8; --text:#e6eef6; --card:#071827; }
+    }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;line-height:1.4;font-size:15px;padding:28px}
+
+    header{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+    .logo{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;font-weight:800;font-size:18px}
+    nav a{color:var(--muted);text-decoration:none;margin-right:14px;font-weight:700}
+    .controls{display:flex;gap:12px;align-items:center}
+    .btn{padding:8px 14px;border-radius:10px;border:1px solid transparent;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;text-decoration:none}
+
+    main{max-width:1100px;margin:22px auto 0}
+    .hero{display:flex;gap:20px;align-items:center;background:var(--card);padding:28px;border-radius:16px;box-shadow:var(--shadow)}
+    .hero-left{display:flex;gap:18px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:16px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,rgba(214,52,42,0.12),transparent)}
+    .title{font-size:20px;margin:0 0 6px 0;font-weight:800}
+    .tagline{margin:0;color:var(--muted)}
+    .tagline .line1{display:block;font-weight:700}
+    .tagline .line2{display:block;margin-top:6px}
+
+    /* 3D mesh panel */
+    .mesh-wrap{width:240px;height:180px;perspective:900px}
+    .mesh{
+      width:100%;height:100%;border-radius:12px;overflow:hidden;position:relative;transform-style:preserve-3d;
+      background:repeating-linear-gradient(45deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 8px), linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      box-shadow:0 12px 40px rgba(0,0,0,0.08);
+      animation: tilt 8s ease-in-out infinite;
+    }
+    .mesh::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));pointer-events:none}
+    @keyframes tilt{0%{transform:rotateX(6deg) rotateY(-12deg) translateZ(0)}50%{transform:rotateX(-6deg) rotateY(12deg) translateZ(8px)}100%{transform:rotateX(6deg) rotateY(-12deg) translateZ(0)}}
+
+    /* subtle floating particles */
+    .particle{position:absolute;width:6px;height:6px;background:var(--accent);opacity:.12;border-radius:50%;animation: float 6s linear infinite}
+    .p1{left:12%;top:22%;animation-duration:7s}
+    .p2{left:72%;top:6%;animation-duration:5.5s}
+    .p3{left:44%;top:80%;animation-duration:6.8s}
+    @keyframes float{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-18px) translateX(6px)}100%{transform:translateY(0) translateX(0)}}
+
+    .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+    .contact{font-weight:800;color:var(--accent)}
+
+    /* products grid */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}.hero{flex-direction:column}.hero-right{align-items:flex-start}}
+    .card{background:var(--bg);padding:18px;border-radius:12px;display:flex;gap:12px;align-items:center;box-shadow:0 8px 20px rgba(2,6,23,0.04);transition:transform .22s ease,box-shadow .22s ease;border:1px solid rgba(15,23,42,0.04)}
+    .card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+    .card .ico{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:white;font-weight:800;font-size:22px}
+    .card h3{margin:0;font-size:16px}
+    .card p{margin:6px 0 0 0;color:var(--muted);font-size:14px}
+
+    /* sticky contact button */
+    .call{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px 16px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,0.18);text-decoration:none;font-weight:800}
+
+    footer{max-width:1100px;margin:28px auto 0;color:var(--muted);font-size:13px}
+
+    .small{font-size:13px;color:var(--muted)}
+    /* Gallery styles */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;display:block}
+    @media (max-width:720px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery img{height:130px}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#">
+      <div class="logo"><img src="assets/logo/EKRE3295.JPEG" alt="DA mosquito net logo" style="width:56px;height:56px;object-fit:contain"></div>
+      <div>
+        <div style="font-weight:800">DA mosquito net</div>
+        <div style="font-size:13px;color:var(--muted)">Protection for doors · windows · balconies</div>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <nav aria-label="primary">
+        <a href="#products">Products</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="controls">
+        <div id="themeToggle" style="cursor:pointer;padding:8px;border-radius:10px;border:1px solid rgba(0,0,0,0.04)">Mode</div>
+        <a class="btn" href="tel:6379620541">Call: 6379620541</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="intro">
+      <div class="hero-left">
+        <div class="avatar" aria-hidden="true">🦟</div>
+        <div>
+          <h1 id="intro" class="title">DA mosquito net</h1>
+          <p class="tagline"><span class="line1">Custom-fit mosquito nets for every opening.</span><span class="line2">Durable materials · Easy installation · Guaranteed protection.</span></p>
+          <p class="small" style="margin-top:8px">3d animation website creat</p>
+          <p class="small" style="margin-top:8px">Contact: <a class="contact" href="tel:6379620541">6379620541</a></p>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="mesh-wrap" aria-hidden="true">
+          <div class="mesh">
+            <span class="particle p1"></span>
+            <span class="particle p2"></span>
+            <span class="particle p3"></span>
+          </div>
+        </div>
+        <div style="text-align:right"><a class="btn" href="#products">View Solutions</a></div>
+      </div>
+    </section>
+
+    <section id="products" class="grid" aria-label="Products">
+      <article class="card">
+        <div class="ico">🚪</div>
+        <div>
+          <h3>Door Screens</h3>
+          <p>Robust magnetic and hinged door screens tailored to fit standard and custom frames.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="ico">🪟</div>
+        <div>
+          <h3>Window Mesh</h3>
+          <p>Fine-weave window nets that keep insects out while maintaining airflow and visibility.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="ico">🌇</div>
+        <div>
+          <h3>Balcony & Patio</h3>
+          <p>Durable balcony enclosures and retractable solutions for large openings and terraces.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="ico">🛠️</div>
+        <div>
+          <h3>Installation</h3>
+          <p>Professional measuring and installation service with quality checks and warranty options.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery" aria-label="Gallery">
+      <img src="assets/gallery/IMG_7031.WEBP" alt="Product 1">
+      <img src="assets/gallery/IMG_7030.WEBP" alt="Product 2">
+      <img src="assets/gallery/IMG_7029.JPG" alt="Product 3">
+      <img src="assets/gallery/IMG_7033.JPG" alt="Product 4">
+      <img src="assets/gallery/IMG_7032.JPG" alt="Product 5">
+      <img src="assets/gallery/IMG_7035.JPG" alt="Product 6">
+      <img src="assets/gallery/IMG_7034.PNG" alt="Product 7">
+    </section>
+  </main>
+
+  <a class="call" href="tel:6379620541">Call Now · 6379620541</a>
+
+  <footer>
+    <div style="text-align:center;margin-top:12px">Made with care • DA mosquito net — <span class="small">Add product photos or replace icons with images for a richer site.</span></div>
+    <div style="text-align:center;margin-top:6px" class="small">Email: <a href="mailto:devaprasath5524@gmail.com">devaprasath5524@gmail.com</a></div>
+  </footer>
+
+  <script>
+    (function(){n      // Theme toggle (persisted)
+      function applyTheme(theme){
+        if(theme==='dark') document.documentElement.setAttribute('data-theme','dark');
+        else document.documentElement.removeAttribute('data-theme');
+      }
+      const stored = localStorage.getItem('theme');
+      if(stored) applyTheme(stored);
+      else{ const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; applyTheme(prefers ? 'dark' : 'light'); }
+      const t = document.getElementById('themeToggle');      t.addEventListener('click', function(){        const isDark = document.documentElement.getAttribute('data-theme')==='dark';        const next = isDark ? 'light' : 'dark'; applyTheme(next); localStorage.setItem('theme', next);      });
+
+      // Small enhancement: interactive tilt on mouse for mesh
+      const mesh = document.querySelector('.mesh');
+      const wrap = document.querySelector('.mesh-wrap');      if(mesh && wrap){        wrap.addEventListener('mousemove', (e)=>{          const r = wrap.getBoundingClientRect();          const x = (e.clientX - r.left)/r.width - 0.5;          const y = (e.clientY - r.top)/r.height - 0.5;          mesh.style.transform = `rotateX(${ -y * 10 }deg) rotateY(${ x * 20 }deg)`;        });        wrap.addEventListener('mouseleave', ()=>{ mesh.style.transform = '' });      }    })();
+  </script>
+</body>
+</html>
